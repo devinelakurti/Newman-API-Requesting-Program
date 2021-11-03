@@ -1,0 +1,74 @@
+{
+    "info": {
+        "_postman_id": "a675aa41-164a-4eb5-904f-75364a4f1a14",
+        "name": "DNATest",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "getData",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "text/x-fasta",
+                        "type": "text",
+                        "disabled": true
+                    }
+                ],
+                "url": {
+                    "raw": "https://rest.ensembl.org/sequence/region/human/{{genome}}?content-type=text/x-fasta",
+                    "protocol": "https",
+                    "host": [
+                        "rest",
+                        "ensembl",
+                        "org"
+                    ],
+                    "path": [
+                        "sequence",
+                        "region",
+                        "human",
+                        "{{genome}}"
+                    ],
+                    "query": [
+                        {
+                            "key": "content-type",
+                            "value": "text/x-fasta"
+                        }
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    "reponseBodyData = responseBody;",
+                    "pm.test(\"Response Body Printout= (\" + responseBody",
+                    " + \")\", function () {",
+                    "});"
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "genome",
+            "value": "{{CHR#}}:{{First}}..{{Third}}:1"
+        }
+    ]
+}
